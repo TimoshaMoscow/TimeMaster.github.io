@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeMaster - Умное расписание</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Авторизация -->
+        <div id="auth-section" class="auth-section">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">Вход</button>
+                    <button class="tab-btn" data-tab="register">Регистрация</button>
+                </div>
+
+                <div class="auth-forms">
+                    <!-- Форма входа -->
+                    <form id="login-form" class="auth-form active">
+                        <h2>Добро пожаловать!</h2>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="login-email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="Пароль" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Войти</button>
+                    </form>
+
+                    <!-- Форма регистрации -->
+                    <form id="register-form" class="auth-form">
+                        <h2>Создайте аккаунт</h2>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="register-name" placeholder="Имя" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="register-email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="register-password" placeholder="Пароль" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основное приложение -->
+        <div id="app-section" class="app-section hidden">
+            <header class="header">
+                <div class="header-content">
+                    <h1><i class="fas fa-calendar-alt"></i> TimeMaster</h1>
+                    <div class="user-info">
+                        <span id="user-name"></span>
+                        <button id="logout-btn" class="btn-secondary">
+                            <i class="fas fa-sign-out-alt"></i> Выйти
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <!-- Добавление задачи -->
+                <div class="add-task-section">
+                    <h2>Добавить новую задачу</h2>
+                    <form id="add-task-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <input type="text" id="task-title" placeholder="Название задачи" required>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="task-description" placeholder="Описание задачи"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Дата и время:</label>
+                                <input type="datetime-local" id="task-datetime" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Продолжительность (мин):</label>
+                                <input type="number" id="task-duration" min="15" step="15" value="60" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Приоритет:</label>
+                                <select id="task-priority">
+                                    <option value="low">Низкий</option>
+                                    <option value="medium" selected>Средний</option>
+                                    <option value="high">Высокий</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-plus"></i> Добавить задачу
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Расписание -->
+                <div class="schedule-section">
+                    <div class="section-header">
+                        <h2>Ваше расписание</h2>
+                        <div class="date-navigation">
+                            <button id="prev-day" class="btn-icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span id="current-date"></span>
+                            <button id="next-day" class="btn-icon">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="schedule-container" class="schedule-container">
+                        <!-- Расписание будет генерироваться здесь -->
+                    </div>
+                </div>
+
+                <!-- Список задач -->
+                <div class="tasks-section">
+                    <h2>Все задачи</h2>
+                    <div id="tasks-list" class="tasks-list">
+                        <!-- Задачи будут отображаться здесь -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
